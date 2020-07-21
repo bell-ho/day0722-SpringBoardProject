@@ -9,4 +9,10 @@ public interface BoardService {
 	public List<BoardVo>list();
 	
 	public void insert(BoardVo boardVo);
+	
+	public BoardVo get(Long bno);
+	
+	public int delete(Long bno);
+	
+	public boolean update(BoardVo boardVo);
 }

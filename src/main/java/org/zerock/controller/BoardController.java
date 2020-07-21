@@ -3,7 +3,6 @@ package org.zerock.controller;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.context.annotation.Conditional;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -38,4 +37,22 @@ public class BoardController {
 		boardService.insert(boardVo);
 		return "redirect:/board/list";
 	}
+	
+	@GetMapping({"/get","/update"})
+	public void get(Long bno,Model model) {
+		model.addAttribute("b",boardService.get(bno));
+	}
+	
+	@PostMapping("/delete")
+	public String delete(Long bno) {
+		boardService.delete(bno);
+		return "redirect:/board/list";
+	}
+	
+	@PostMapping("/update")
+	public String update(BoardVo boardVo) {
+		boardService.update(boardVo);
+		return "redirect:/board/list";
+	}
+	
 }

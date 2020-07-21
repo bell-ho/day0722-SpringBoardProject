@@ -34,11 +34,11 @@
 			</td>
 			
 			<td>
-			<c:out value="${list.title }"></c:out>
+			<a href="/board/get?bno=${list.bno }">${list.title }</a>
 			</td>
 			
 			<td>
-			<fmt:formatDate value="${list.regdate }"/>
+			<fmt:formatDate pattern="yyyy-MM-dd" value="${list.regdate }"/>
 			</td>
 		</tr>
 		</c:forEach>

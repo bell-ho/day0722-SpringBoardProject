@@ -16,3 +16,11 @@
   </insert>
   
 table 만들때 <tr>
+
+리스트에서 넘겨줄때
+<td>
+<a href="/board/get?bno=${list.bno }">${list.title }</a>
+</td>
+
+리스트에서 fmt를 썼다면 update에서도 fmt를 써줘서 수정을 해야함
+<input readonly="readonly" name="updatedate" type="text" value='<fmt:formatDate pattern="yyyy/MM/dd" value="${b.updatedate }"/>'><br>

@@ -8,6 +8,7 @@ import org.zerock.domain.BoardVo;
 import org.zerock.mapper.BoardMapper;
 
 import lombok.Setter;
+import oracle.security.o3logon.b;
 
 @Service
 public class BoardServiceImpl implements BoardService {
@@ -25,6 +26,24 @@ public class BoardServiceImpl implements BoardService {
 	public void insert(BoardVo boardVo) {
 		// TODO Auto-generated method stub
 		boardMapper.insert(boardVo);
+	}
+
+	@Override
+	public BoardVo get(Long bno) {
+		// TODO Auto-generated method stub
+		return boardMapper.get(bno);
+	}
+
+	@Override
+	public int delete(Long bno) {
+		// TODO Auto-generated method stub
+		return boardMapper.delete(bno);
+	}
+
+	@Override
+	public boolean update(BoardVo boardVo) {
+		// TODO Auto-generated method stub
+		return boardMapper.update(boardVo)==1;
 	}
 
 }

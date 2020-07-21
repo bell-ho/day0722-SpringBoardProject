@@ -15,7 +15,7 @@
 		</div>
 		<br>
 		<div>
-		내용 : <textarea rows="5" cols="10" name="content"></textarea>
+		내용 : <textarea rows="10" cols="80" name="content"></textarea>
 		</div>
 		<br>
 		<div>

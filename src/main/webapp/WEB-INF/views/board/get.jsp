@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@include file="../include/header.jsp" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -25,25 +26,37 @@ $(document).ready(function(){
 <title>Insert title here</title>
 </head>
 <body>
+<div class="container">
+
 <h1>글 상세</h1>
-		<div>
-		제목 : <c:out value="${b.title }"></c:out>
+	<div class="panel panel-default">
+		<div class="form-group">
+		<label>제목 : </label>
+		<c:out value="${b.title }"></c:out>
 		</div>
 		
-		<div>
-		내용 : <c:out value="${b.title }"></c:out>
+		<div class="form-group">
+		<label>내용 : </label>
+		<c:out value="${b.content }"></c:out>
 		</div>
 		
-		<div>
-		작성자 : <c:out value="${b.title }"></c:out>
+		<div class="form-group">
+		<label>작성자 : </label>
+		<c:out value="${b.writer }"></c:out>
+		</div>
+	
+		<div class="panel-footer">
+		<button class="btn btn-default" onclick="location.href='/board/update?bno=${b.bno}'">수정</button>
+		<button class="btn btn-default" id="deleteBtn" type="submit">삭제</button>
+		<button class="btn btn-default" onclick="location.href='/board/list'">목록</button>
 		</div>
 		
-		<button onclick="location.href='/board/update?bno=${b.bno}'">수정</button>
-		<button id="deleteBtn" type="submit">삭제</button>
-		<button onclick="location.href='/board/list'">목록</button>
-		
+	</div>
 		<form id="action" action="/#" method="post">
 			<input type="hidden" value="${b.bno }">
 		</form>
+		
+</div>
+
 </body>
 </html>

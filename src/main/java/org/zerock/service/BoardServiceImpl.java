@@ -21,4 +21,10 @@ public class BoardServiceImpl implements BoardService {
 		return boardMapper.list();
 	}
 
+	@Override
+	public void insert(BoardVo boardVo) {
+		// TODO Auto-generated method stub
+		boardMapper.insert(boardVo);
+	}
+
 }

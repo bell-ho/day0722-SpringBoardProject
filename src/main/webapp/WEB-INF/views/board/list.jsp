@@ -10,27 +10,37 @@
 </head>
 <body>
 <h1>리스트</h1>
+
+	<div>
+		<button onclick="location.href='/board/insert'" >글쓰기</button>
+	</div>
+
 	<table border="1">
 		<tr>
-			<td>번호<td><br>
-			<td>작성자<td><br>
-			<td>제목<td><br>
-			<td>등록일<td><br>
+			<td>번호</td>
+			<td>작성자</td>
+			<td>제목</td>
+			<td>등록일</td>
 		</tr>
 		
 		<c:forEach var="list" items="${list }">
+		<tr>
 			<td>
 			<c:out value="${list.bno }"></c:out>
 			</td>
+			
 			<td>
 			<c:out value="${list.writer }"></c:out>
 			</td>
+			
 			<td>
 			<c:out value="${list.title }"></c:out>
 			</td>
+			
 			<td>
 			<fmt:formatDate value="${list.regdate }"/>
 			</td>
+		</tr>
 		</c:forEach>
 		
 	</table>

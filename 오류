@@ -2,3 +2,17 @@
 1.mapper의 저장 경로가 오타났었음
 2.service 빈설정 안해줌
 3.hikari설정 오타남
+
+0721
+<insert id="insert">
+  
+  	<selectKey keyProperty="bno" order="BEFORE" resultType="long">
+  		select seq_board.nextval from dual
+  	</selectKey>
+  
+  	insert into tbl_board (bno,title,content,writer)
+  	values (#{bno} , #{title},#{content},#{writer})
+  	
+  </insert>
+  
+table 만들때 <tr>

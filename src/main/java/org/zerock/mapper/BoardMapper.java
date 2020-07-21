@@ -7,4 +7,6 @@ import org.zerock.domain.BoardVo;
 public interface BoardMapper {
 
 	public List<BoardVo>list();
+	
+	public void insert(BoardVo boardVo);
 }

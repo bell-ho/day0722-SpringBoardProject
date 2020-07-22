@@ -8,24 +8,36 @@
 <title>Insert title here</title>
 </head>
 <body>
+<div class="container">
 <h1>글쓰기</h1>
-	<form action="/board/insert" method="post">
-		
-		<div>
-			제목 : <input type="text" name="title">
-		</div>
-		<br>
-		<div>
-		내용 : <textarea rows="10" cols="80" name="content"></textarea>
-		</div>
-		<br>
-		<div>
-			작성자 : <input type="text" name="writer">
-		</div>
-		<br>
-		<button type="submit">등록</button>
-		<button type="reset">취소</button>
-		<button onclick="loction.href='/board/list'" type="button">목록</button>
-	</form>
+	<div class="table-responsive">
+		<form action="/board/insert" method="post">
+			
+			<div class="form-group">
+				<label >제목 : </label><br>
+				<input type="text" name="title" required="required">
+			</div>
+			
+			<div class="form-group">
+			<label  class="control-label col-sm-2">내용 : </label><br>
+			<textarea rows="10" cols="80" name="content" required="required"></textarea>
+			</div>
+			
+			<div class="form-group">
+				<label>작성자 : </label>
+				 <input type="text" name="writer"required="required">
+			</div>
+			
+			<div class="form-group">
+				<div class="panel-footer">
+					<button type="submit">등록</button>
+					<button type="reset">취소</button>
+					<button onclick="loction.href='/board/list'" type="button">목록</button>
+				</div>
+			</div>
+			
+		</form>
+	</div>
+</div>
 </body>
 </html>

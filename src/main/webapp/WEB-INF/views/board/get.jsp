@@ -11,6 +11,7 @@ $(document).ready(function(){
 
 	var action = $("#action");
 	
+	
 	$("#deleteBtn").on("click",function(e){
 
 		e.preventDefault();
@@ -46,14 +47,16 @@ $(document).ready(function(){
 		</div>
 	
 		<div class="panel-footer">
-		<button class="btn btn-default" onclick="location.href='/board/update?bno=${b.bno}'">수정</button>
-		<button class="btn btn-default" id="deleteBtn" type="submit">삭제</button>
-		<button class="btn btn-default" onclick="location.href='/board/list'">목록</button>
+			<button class="btn btn-default" onclick="location.href='/board/update?bno=${b.bno}&pagenum=${criteria.pagenum}&amount=${criteria.amount }'">수정</button>
+			<button class="btn btn-default" id="deleteBtn" type="submit">삭제</button>
+			<button class="btn btn-default" onclick="location.href='/board/list?pagenum=${criteria.pagenum}&amount=${criteria.amount }'">목록</button>
 		</div>
 		
 	</div>
 		<form id="action" action="/#" method="post">
 			<input type="hidden" value="${b.bno }">
+			<input type="hidden" name="pagenum" value="${criteria.pagenum }">
+			<input type="hidden" name="amount" value="${criteria.amount }">
 		</form>
 		
 </div>

@@ -13,6 +13,7 @@ import org.zerock.domain.BoardVo;
 import org.zerock.domain.Criteria;
 import org.zerock.domain.pageDTO;
 import org.zerock.service.BoardService;
+import org.zerock.service.ReplyService;
 
 import lombok.AllArgsConstructor;
 import lombok.Setter;
@@ -26,6 +27,8 @@ public class BoardController {
 
 	@Setter(onMethod_ =@Autowired )
 	private BoardService boardService;
+	@Setter(onMethod_ =@Autowired )
+	private ReplyService replyService;
 	
 	@GetMapping("/list")
 	public void list(Model model, Criteria criteria) {
@@ -50,6 +53,7 @@ public class BoardController {
 	@GetMapping({"/get","/update"})
 	public void get(Long bno,Model model,Criteria criteria) {
 		model.addAttribute("b",boardService.get(bno));
+		model.addAttribute("reply",replyService.list(bno));
 	}
 	
 	@PostMapping("/delete")

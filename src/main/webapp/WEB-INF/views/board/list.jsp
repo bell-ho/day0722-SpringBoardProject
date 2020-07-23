@@ -26,6 +26,25 @@ $(document).ready(function(){
 		action.attr("action","/board/get");
 		action.submit();
 	})
+
+	var search = $("#search");
+
+	$("#search button").on("click",function(e){
+
+		if(!search.find("option:selected").val()){
+			alert("검색 종류 선택")
+			return false;
+		}
+
+		if(!search.find("input[name='keyword']").val()){
+			alert("키워드 입력")
+			return false;
+		}
+		search.find("input[name='pagenum']").val("1");
+		e.preventDefault();
+
+		search.submit();
+	})
 })
 </script>
 </head>
@@ -70,6 +89,35 @@ $(document).ready(function(){
 	<div class="panel-footer">
 		<button class="btn btn-default" onclick="location.href='/board/insert'" >글쓰기</button>
 		
+		<div class="row">
+                       	<div class="col-lg-12">
+                       		
+                       		<form action="/board/list" method="get" id="search">
+                       			<select name='type'>
+									<option value=""
+									<c:out value="${pagemaker.criteria.type == null?'selected':'' }"/>>--</option>
+									<option value="T"
+									<c:out value="${pagemaker.criteria.type eq 'T'?'selected':'' }"/>>제목</option>
+									<option value="C"
+									<c:out value="${pagemaker.criteria.type eq 'C'?'selected':'' }"/>>내용</option>
+									<option value="W"
+									<c:out value="${pagemaker.criteria.type eq 'W'?'selected':'' }"/>>작성자</option>
+									<option value="TC"
+									<c:out value="${pagemaker.criteria.type eq 'TC'?'selected':'' }"/>>제목 or 내용</option>
+									<option value="TW"
+									<c:out value="${pagemaker.criteria.type eq 'TW'?'selected':'' }"/>>제목 or 작성자</option>
+									<option value="TWC"
+									<c:out value="${pagemaker.criteria.type eq 'TWC'?'selected':'' }"/>>제목 or 내용 or 작성자</option>
+								</select>
+                       			<input type="text" name="keyword" value="${pagemaker.criteria.keyword }"/>
+                       			<input type="hidden" name="pagenum" value="${pagemaker.criteria.pagenum }">
+								<input type="hidden" name="amount" value="${pagemaker.criteria.amount }">
+       							<button class="btn btn-default">검색</button>
+                       		</form>
+                       		
+                       	</div>
+                       </div>
+		
 		<div class="pull-right">
 			<ul class="pagination">
 				
@@ -97,6 +145,8 @@ $(document).ready(function(){
 <form id="action" action="/board/list" method="get">
 	<input type="hidden" name="pagenum" value="${pagemaker.criteria.pagenum }">
 	<input type="hidden" name="amount" value="${pagemaker.criteria.amount }">
+	<input type="hidden" name="type" value='<c:out value="${pagemaker.criteria.type }"></c:out>'>
+	<input type="hidden" name="keyword" value='<c:out value="${pagemaker.criteria.keyword }"></c:out>'>
 </form>
 
 </body>

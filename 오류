@@ -1,4 +1,5 @@
 오류 원인
+
 1.mapper의 저장 경로가 오타났었음
 2.service 빈설정 안해줌
 3.hikari설정 오타남
@@ -8,6 +9,9 @@
   
   	<selectKey keyProperty="bno" order="BEFORE" resultType="long">
   		select seq_board.nextval from dual
+  		
+  		dure : 오라클에서 자체적으로 제공하는 테이블 (계산할때)
+  		
   	</selectKey>
   
   	insert into tbl_board (bno,title,content,writer)
@@ -24,3 +28,20 @@ table 만들때 <tr>
 
 리스트에서 fmt를 썼다면 update에서도 fmt를 써줘서 수정을 해야함
 <input readonly="readonly" name="updatedate" type="text" value='<fmt:formatDate pattern="yyyy/MM/dd" value="${b.updatedate }"/>'><br>
+
+
+0723
+RedirectAttributes 사용하여 페이징처리함
+
+<![CDATA[
+	select bno,title,content,writer,regdate,updatedate 
+	from(
+		select /*+INDEX_DESC(tbl_board pk_board)*/
+			rownum rn , bno,title,content,writer,regdate,updatedate 
+		from
+		tbl_board
+		where rownum <= #{pagenum} * #{amount} 
+		<<rownum > 10 and rownum <= 20 이렇게 해버리면 and에서 다시 1로돌아가기 때문에 안먹힘>>
+	)
+	where rn > (#{pagenum} -1) * #{amount}
+]]>

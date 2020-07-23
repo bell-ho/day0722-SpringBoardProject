@@ -47,9 +47,11 @@ $(document).ready(function(){
 		</div>
 	
 		<div class="panel-footer">
-			<button class="btn btn-default" onclick="location.href='/board/update?bno=${b.bno}&pagenum=${criteria.pagenum}&amount=${criteria.amount }'">수정</button>
+			<button class="btn btn-default" onclick="location.href='/board/update?bno=${b.bno}&pagenum=${criteria.pagenum}&amount=${criteria.amount }&type=${criteria.type }&keyword=${criteria.keyword }'">수정</button>
+				
 			<button class="btn btn-default" id="deleteBtn" type="submit">삭제</button>
-			<button class="btn btn-default" onclick="location.href='/board/list?pagenum=${criteria.pagenum}&amount=${criteria.amount }'">목록</button>
+			
+			<button class="btn btn-default" onclick="location.href='/board/list?pagenum=${criteria.pagenum}&amount=${criteria.amount }&type=${criteria.type }&keyword=${criteria.keyword }'">목록</button>
 		</div>
 		
 	</div>
@@ -58,6 +60,8 @@ $(document).ready(function(){
 			<input type="hidden" value="${b.bno }">
 			<input type="hidden" name="pagenum" value="${criteria.pagenum }">
 			<input type="hidden" name="amount" value="${criteria.amount }">
+			<input type="hidden" name="type" value='<c:out value="${criteria.type }"></c:out>'>
+       		<input type="hidden" name="keyword" value='<c:out value="${criteria.keyword }"></c:out>'>
 		</form>
 		
 </div>

@@ -4,6 +4,27 @@
   "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
   <mapper namespace="org.zerock.mapper.BoardMapper">
   
+  <sql id="search">
+  	<trim prefix="(" suffix= ")AND" prefixOverrides="OR">
+  		<foreach collection="typeArr" item="type">
+  			<trim prefix="OR">
+  				<choose>
+  					<when test="type == 'T'.toString()">
+  						title like '%'||#{keyword}||'%'
+  					</when>
+  					<when test="type == 'C'.toString()">
+  						content like '%'||#{keyword}||'%'
+  					</when>
+  					<when test="type == 'W'.toString()">
+  						writer like '%'||#{keyword}||'%'
+  					</when>
+  				</choose>
+  			</trim>
+  		</foreach>
+  	</trim>
+  </sql>
+  
+  
   <select id="list" resultType="org.zerock.domain.BoardVo">
   	<![CDATA[
   		select bno,title,content,writer,regdate,updatedate 
@@ -12,7 +33,13 @@
   				rownum rn , bno,title,content,writer,regdate,updatedate 
   			from
   			tbl_board
-  			where rownum <= #{pagenum} * #{amount}
+  			where 
+	]]>
+  			
+  			<include refid="search"></include>	
+  				
+	<![CDATA[	
+  			rownum <= #{pagenum} * #{amount}
   		)
   		where rn > (#{pagenum} -1) * #{amount}
   	]]>

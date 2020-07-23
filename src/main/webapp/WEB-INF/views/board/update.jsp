@@ -44,6 +44,8 @@
 						<input type="hidden" value="${b.bno }">
 						<input type="hidden" name="pagenum" value="${criteria.pagenum }">
 						<input type="hidden" name="amount" value="${criteria.amount }">
+						<input type="hidden" name="type" value='<c:out value="${criteria.type }"></c:out>'>
+       					<input type="hidden" name="keyword" value='<c:out value="${criteria.keyword }"></c:out>'>
 					</div>
 				</div>
 			</form>

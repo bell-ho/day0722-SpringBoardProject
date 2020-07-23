@@ -39,7 +39,7 @@
 				<div class="form-group">
 					<div class="panel-footer">
 						<button class="btn btn-default" type="submit">수정</button>
-						<button class="btn btn-default" onclick="location.href='/board/list?pagenum=${criteria.pagenum}&amount=${criteria.amount }'">목록</button>
+						<button class="btn btn-default" >목록</button>
 						
 						<input type="hidden" value="${b.bno }">
 						<input type="hidden" name="pagenum" value="${criteria.pagenum }">

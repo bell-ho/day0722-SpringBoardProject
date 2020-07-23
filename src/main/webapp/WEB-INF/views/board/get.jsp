@@ -53,6 +53,7 @@ $(document).ready(function(){
 		</div>
 		
 	</div>
+		
 		<form id="action" action="/#" method="post">
 			<input type="hidden" value="${b.bno }">
 			<input type="hidden" name="pagenum" value="${criteria.pagenum }">

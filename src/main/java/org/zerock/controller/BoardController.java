@@ -53,17 +53,25 @@ public class BoardController {
 	}
 	
 	@PostMapping("/delete")
-	public String delete(Long bno ,Criteria criteria) {
+	public String delete(Long bno ,Criteria criteria,RedirectAttributes rttr) {
 		boardService.delete(bno);
 		
-		return "redirect:/board/list?pagenum="+criteria.getPagenum()+"&amount="+criteria.getAmount();
+		rttr.addAttribute("pagenum",criteria.getPagenum());
+		rttr.addAttribute("amount",criteria.getAmount());
+		
+//		return "redirect:/board/list?pagenum="+criteria.getPagenum()+"&amount="+criteria.getAmount();
+		return "redirect:/board/list";
 	}
 	
 	@PostMapping("/update")
 	public String update(BoardVo boardVo,Criteria criteria , RedirectAttributes rttr) {
 		boardService.update(boardVo);
 		
-		return "redirect:/board/list?pagenum="+criteria.getPagenum()+"&amount="+criteria.getAmount();
+		rttr.addAttribute("pagenum",criteria.getPagenum());
+		rttr.addAttribute("amount",criteria.getAmount());
+		
+//		return "redirect:/board/list?pagenum="+criteria.getPagenum()+"&amount="+criteria.getAmount();
+		return "redirect:/board/list";
 	}
 	
 }
